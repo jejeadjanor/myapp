@@ -3,6 +3,7 @@ import axios from "axios";
 import { EVENTS_API } from "../constants";
 
 export default class Signup extends Component {
+   
     state =  {
         name: "", 
         email: "",

@@ -8,6 +8,7 @@ import './components/Home.css'
 import Signup from './components/Signup';
 import Home from './components/Home';
 import EventReg from './components/EventsReg'
+import Events from './components/Events';
 
 class App extends React.Component{
 
@@ -96,8 +97,7 @@ class App extends React.Component{
               <nav>
                 <ul>
                   <li><Link to="/">Home</Link></li>
-                  <li><Link to="#">Edit Booking</Link></li>
-                  <li><Link to="/eventreg">Booked Sessions</Link></li>
+                  <li><Link to="/events">Booked Sessions</Link></li>
                   <li><Link to="/login">Login</Link></li>
                   <li className="last"><Link to="#">Logout</Link></li>
                 </ul>
@@ -106,6 +106,7 @@ class App extends React.Component{
           </div>
           <Switch>
               <Route exact path='/' component={Home} />
+              <Route path='/events' component={Events}/>
               <Route path='/signup' component={Signup} />
               <Route path='/login' component={LoginForm} />
               <Route path='/eventreg' component={EventReg} />

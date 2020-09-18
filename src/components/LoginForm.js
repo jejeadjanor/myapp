@@ -84,7 +84,7 @@ export default class Login extends Component {
             
             <div className="LoginForm">
                 <div className='log'> Sign into your account </div >
-                <form onSubmit={this.logIn}>
+                <form onSubmit={this.doLogin}>
                          {/* THE INPUT FIELD FOR EMAIL ADDRESS */}
                 <div className="input-group">
             <span><i className="fa fa-user" aria-hidden="true"></i></span>

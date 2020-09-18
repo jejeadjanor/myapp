@@ -57,7 +57,7 @@ export default class Signup extends Component {
                                  <input type="text" name="username"
                                 value={this.state.username} 
                                 onChange={this.onChange}
-                                placeholder="Username *" required/>
+                                placeholder="Username *" required minLength={5}/>
 
                             </div>
 
@@ -74,7 +74,7 @@ export default class Signup extends Component {
                                 <input type="Password" name="password"
                                 value={this.state.password}
                                 onChange={this.onChange} 
-                                placeholder="Password" required/>
+                                placeholder="Password" required minLength={8}/>
                             </div>
                                 <button className="bttn">Create Account</button>
                             
