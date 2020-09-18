@@ -60,32 +60,6 @@ class App extends React.Component{
     }
   } 
   render(){
-
-    if (UserStore.loading){
-      return(
-        <div className = "app">
-          <div className = 'containerr'>
-            Loading, please wait...
-          </div>
-        </div>
-      );
-    }
-    else {
-      if (UserStore.isLoggedIn){
-        return(
-          <div className = "app">
-            <div className = 'containerr'>
-              Welcome {UserStore.email}
-            {/*LOG OUT BUTTON */}
-              <button
-                text = {'Log out'}
-                disabled = {false}
-                onClick = { () => this.doLogout()}
-              />
-            </div>
-          </div>
-        );
-      }
       return(
         <Router>
             <div class="wrapper row1">
@@ -119,11 +93,6 @@ class App extends React.Component{
           </div>
       </Router>
       );
-
-      return(
-        <Home></Home>
-      )
-    }
   }
 }
 export default observer(App);

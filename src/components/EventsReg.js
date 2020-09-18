@@ -19,14 +19,7 @@ export default class Signup extends Component {
         e.preventDefault();
         axios.post(EVENTS_API, this.state)
         .then(() => {
-            // console.log(response.data.username);
-            // console.log(response.status);
-            //     if (response.status === 201){
-            //         alert(`Hi ${response.body.username}, you have successfully registered`)
-            //     }else{ 
-            //         alert(`Hi ${response.body.username}, ${response.body.email}`)
-            //     }
-            
+            console.log(this.state)
             console.log(this.state)
             this.setState({
                 name: "", 
@@ -34,6 +27,7 @@ export default class Signup extends Component {
                 number: "",
                 event: "",
             })
+            alert(`Successfully registered for the event`);
         }).catch(function(error) {
             console.log(error);
         })
@@ -62,8 +56,7 @@ export default class Signup extends Component {
                             </div>
 
                             <div className="input-group">
-                        <span><i className="fa fa-lock" aria-hidden="true"></i></span>
-                                <input type="password" name="number"
+                                <input type="text" name="number"
                                 value={this.state.number}
                                 onChange={this.onChange} 
                                 placeholder="Phone Number" required/>

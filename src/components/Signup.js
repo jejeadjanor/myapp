@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { API_URL } from "../constants";
+import { USERREG_URL } from "../constants";
 
 export default class Signup extends Component {
     state =  {
@@ -17,9 +17,13 @@ export default class Signup extends Component {
 
     signUp = e => {
         e.preventDefault();
-        axios.post(API_URL, this.state)
-        .then(() => {
-            console.log(this.state)
+        axios.post(USERREG_URL, this.state)
+        .then((data) => {
+            console.log(this.state);
+            console.log(data)
+            if (data.status == 200){
+            alert(`Successfully registered`);
+            }
             this.setState({
                 first_name: "",
                 last_name: "", 

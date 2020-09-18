@@ -6,7 +6,7 @@ import { LOGIN_URL } from "../constants";
 
 export default class Login extends Component {
     state =  {
-        email: "",
+        username: "",
         password: "",
     }
 // PROPERTY HERE REFERS TO THE 'EMAIL' AND 'PASSWORD'
@@ -17,10 +17,17 @@ export default class Login extends Component {
     logIn = e => {
         e.preventDefault();
         axios.post(LOGIN_URL, this.state)
-        .then(() => {
-            console.log(this.state)
+        .then((data) => {
+            console.log(this.state);
+            console.log(data);
+            if (data.status == 200){
+            alert('Successfully logged in');
+            localStorage.setItem("token", data.data.token);
+            }else{
+                alert('user session expired, please log in again')
+            }
             this.setState({
-                email: " ",
+                username: " ",
                 password: " ",
             })
         })
@@ -84,17 +91,17 @@ export default class Login extends Component {
             
             <div className="LoginForm">
                 <div className='log'> Sign into your account </div >
-                <form onSubmit={this.doLogin}>
+                <form onSubmit={this.logIn}>
                          {/* THE INPUT FIELD FOR EMAIL ADDRESS */}
                 <div className="input-group">
             <span><i className="fa fa-user" aria-hidden="true"></i></span>
 
                     <input className='InputField'
-                        type = 'email'
-                        name='email'
-                        value = {this.state.email}
+                        type = 'text'
+                        name='username'
+                        value = {this.state.username}
                         onChange = {this.onChange}
-                        placeholder = 'Email*' required/>
+                        placeholder = 'Username*' required/>
                 
                 </div>
                 {/* THE INPUT FIELD FOR PASSWORD */}
