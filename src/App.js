@@ -7,8 +7,9 @@ import './App.css';
 import './components/Home.css'
 import Signup from './components/Signup';
 import Home from './components/Home';
-import EventReg from './components/EventsReg'
+import EventReg from './components/EventsReg';
 import Events from './components/Events';
+// import  LOGOUT_URL from "../constants";
 
 class App extends React.Component{
 
@@ -41,7 +42,7 @@ class App extends React.Component{
   // API CODES TO LOGOUT ON THE CLICK OF THE LOGOUT BUTTON
   async doLogout(){
     try {
-      let res = await fetch('/logout',{
+      let res = await fetch('http://127.0.0.1:8000/api/logout/',{
         method: 'post',
         headers: {
           'Accept': 'application/json',
@@ -76,11 +77,11 @@ class App extends React.Component{
             <div className = 'containerr'>
               Welcome {UserStore.email}
             {/*LOG OUT BUTTON */}
-              <SubmitButton
+              {/* <SubmitButton
                 text = {'Log out'}
                 disabled = {false}
                 onClick = { () => this.doLogout()}
-              />
+              /> */}
             </div>
           </div>
         );
@@ -98,7 +99,7 @@ class App extends React.Component{
                   <li><Link to="/">Home</Link></li>
                   <li><Link to="/events">Booked Sessions</Link></li>
                   <li><Link to="/login">Login</Link></li>
-                  <li className="last"><Link to="#">Logout</Link></li>
+                  {/* <li className="last"><button type="submit" onSubmit={this.doLogout}>Logout</button></li> */}
                 </ul>
               </nav>
             </header>

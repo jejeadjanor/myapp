@@ -43,7 +43,7 @@ export default class Events extends Component {
             <div style={{backgroundColor: "white", color: "black", height: "700px",width: "80%",marginLeft: "10%"}}>
                 <ul>
               {items.map(item => (
-                <li key={item.name}>
+                <li key={item.id}>
                   <h3>{item.name}</h3>
                   <p>{item.event}</p>
                   <p>{item.email}</p>
