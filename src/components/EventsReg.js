@@ -76,6 +76,15 @@ export default class Signup extends Component {
                                 </select>
 
                             </div>
+                            {/* <div className="input-group">
+                                <select name="emi" value={this.state.email} onChange={this.onChange}>
+                                    <option>Select Time</option>
+                                    <option event="Morning">Morning</option>
+                                    <option event="Afternoon">Afternoon</option>
+                                    <option event="Evening">Evening</option>
+                                </select>
+
+                            </div> */}
                                 <button className="bttn">Register Now</button>
                             
                         </form>
