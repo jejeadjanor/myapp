@@ -13,10 +13,11 @@ import Events from './components/Events';
 
 class App extends React.Component{
 
+
   // API CALL TO CHECK IF THE USER IS LOGGED IN OR NOT WHEN THE COMPONENT IS MOUNTED WITH AN ERROR HANDLER AS WELL
   async componentDidMount(){
     try {
-      let res = await fetch('/isLoggedIn',{
+      let res = await fetch('http://127.0.0.1:8000/api/login/',{
         method: 'post',
         headers: {
           'Accept': 'application/json',
@@ -40,27 +41,15 @@ class App extends React.Component{
     }
   }
   // API CODES TO LOGOUT ON THE CLICK OF THE LOGOUT BUTTON
-  async doLogout(){
-    try {
-      let res = await fetch('http://127.0.0.1:8000/api/logout/',{
-        method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
-      let result = await res.json();
-      
-      if (result && result.success){
-        UserStore.isLoggedIn = false;
-        UserStore.email = '';
-      }
-    }
-    catch(e) {
-      console.log(e)
-    }
+   doLogout(){
+    
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    alert("Currently logged out");
+    
   } 
   render(){
+    
     if (UserStore.loading){
       return(
         <div className = "app">
@@ -96,19 +85,19 @@ class App extends React.Component{
               </div>
               <nav>
                 <ul>
-                  <li><Link to="/">Home</Link></li>
+                  {/* <li><Link to="/">Home</Link></li> */}
                   <li><Link to="/events">Booked Sessions</Link></li>
-                  <li><Link to="/login">Login</Link></li>
-                  {/* <li className="last"><button type="submit" onSubmit={this.doLogout}>Logout</button></li> */}
+                  <li><Link to="/">Login</Link></li>
+                  <li className="last" onClick={this.doLogout}><Link to="/">Logout</Link></li>
                 </ul>
               </nav>
             </header>
           </div>
           <Switch>
-              <Route exact path='/' component={Home} />
+              <Route exact path='/' component={LoginForm} />
               <Route path='/events' component={Events}/>
               <Route path='/signup' component={Signup} />
-              <Route path='/login' component={LoginForm} />
+              <Route path='/home' component={Home} />
               <Route path='/eventreg' component={EventReg} />
           </Switch>
           <div class="wrapper row4">
